@@ -19,7 +19,7 @@ This simple project simplifies technical terms, concepts, jargon, and whatnot.
 
 Found some important information missing? Please open a Pull Request and help improve this project. We welcome contributions of all kinds, whether it's adding new content, fixing typos, or suggesting new features.
 
-`IMPORTANT: This project uses the main branch for both development and deployment. All changes are made directly in the main branch, so please ensure that your contributions are tested and ready to be deployed when you submit them.`
+`IMPORTANT: This project uses the develop branch for both development and master branch for deployment. All changes are made directly in the develop branch and pushed to master branch, so please ensure that your contributions are tested and ready to be deployed when you submit them.`
 
 ![Copy of assets (2)](https://github.com/user-attachments/assets/43d3e163-e279-4f0e-8d70-2a49fcef1632)
 
@@ -37,7 +37,7 @@ Found some important information missing? Please open a Pull Request and help im
    - Replace `your-username` with your GitHub username.
 
 3. **Create a New Branch (Optional but Recommended):**
-   - While it’s not required, we recommend creating a new branch for your changes to keep your `master` branch clean.
+   - While it’s not required, we recommend creating a new branch for your changes to keep your `master` and `develop` branch clean.
    - Use the following command:
      ```bash
      git checkout -b feature-branch
@@ -65,7 +65,7 @@ Found some important information missing? Please open a Pull Request and help im
    - Make sure to describe the changes you’ve made and why they’re beneficial to the project.
 
 8. **Get Your PR Merged:**
-   - Once your PR is reviewed and approved, it will be merged into the `master` branch, which is automatically deployed.
+   - Once your PR is reviewed and approved, it will be merged into the `develop` branch and with a release cycle, `develop` branch will be merged to `master` which is automatically deployed.
 
 Thank you for contributing to the Dev Encyclopedia!
 
