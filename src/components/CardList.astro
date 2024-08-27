@@ -1,22 +1,20 @@
 ---
-import { getCollection } from "astro:content"
-
-const cards = await getCollection("terms");
+// import { getCollection } from "astro:content"
+const {title, description, keywords, subtext} = Astro.props;
+// const cards = await getCollection("terms");
 ---
 
 <div class="card-container" id="cardContainer">
-  {cards.map(card => (
     <div class="card" 
-         data-title={card.data.title} 
-         data-description={card.data.description.texts.join('\n\n')} 
-         data-image-url={card.data.description.image} 
-         data-resource-url={card.data.description.references[0]}
-         data-keywords={(card.data.keywords || []).join(', ')}>
-      <div class="card-title">{card.data.title}</div>
-      <div class="card-subtext">{card.data.subtext}</div>
+         data-title={title} 
+         data-description={description.texts.join('\n\n')} 
+         data-image-url={description.image} 
+         data-resource-url={description.references[0]}
+         data-keywords={(keywords || []).join(', ')}>
+      <div class="card-title">{title}</div>
+      <div class="card-subtext">{subtext}</div>
       <button class="explain-button">Explain</button>
     </div>
-  ))}
 </div>
 
 <!-- Modal Structure -->

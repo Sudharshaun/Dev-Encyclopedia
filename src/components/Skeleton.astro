@@ -1,0 +1,46 @@
+---
+import CardList from "./CardList.astro";
+import Pagination from "./Pagination.astro";
+const allCards = await Astro.glob('../content/terms/*.json');
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await Astro.glob('../content/terms/*.json');
+  return paginate(allPosts, {
+    pageSize: 20,
+  })
+};
+const { page } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname.split('/');
+const firstPath = pathname[1];
+---
+
+<CardList frontmatter>
+    <ol class="posts list">
+      {
+        page.data.map((post) => (
+          <li class="post">
+            <CardList 
+              url={post.url} 
+              title={post.frontmatter.title} 
+              date={post.frontmatter.date} 
+              summary={post.frontmatter.teaser} 
+              tags={post.frontmatter.tags}
+              categories={post.frontmatter.categories}
+            />
+          </li>
+        ))
+      }
+    </ol>
+  
+    {allCards.length > 10 ? (
+      <div class="mt-4">
+        <Pagination length={page.lastPage} 
+          currentUrl={page.url.current} 
+          currentPage={page.currentPage} 
+          firstUrl={`/${firstPath}`} 
+          prevUrl={page.url.prev} 
+          nextUrl={page.url.next} 
+          lastUrl={`/${firstPath}/${page.lastPage}`}
+        />
+      </div>
+    ) : null}
+  </CardList>
